@@ -30,7 +30,12 @@ def hitung_lingkaran():
     keliling = 2 * 3.14 * jari_jari
     hasil.config(text=f"Luas: {luas}, Keliling: {keliling}")
 
+def sembunyikan_semua_input():
+    for widget in input_frame.winfo_children():
+        widget.pack_forget()
+
 def pilih_bangun_datar():
+    sembunyikan_semua_input()
     pilihan = var.get()
     if pilihan == 1:
         label_sisi.pack()
@@ -61,43 +66,47 @@ def pilih_bangun_datar():
 
 root = tk.Tk()
 root.title("Hitung Bangun Datar")
+root.configure(bg='maroon')
 
 var = tk.IntVar()
 
-label = tk.Label(root, text="Pilih Bangun Datar")
+label = tk.Label(root, text="Pilih Bangun Datar", bg='maroon', fg='white')
 label.pack()
 
-rb_segi_empat = tk.Radiobutton(root, text="Segi Empat", variable=var, value=1, command=pilih_bangun_datar)
+rb_segi_empat = tk.Radiobutton(root, text="Segi Empat", variable=var, value=1, command=pilih_bangun_datar, bg='maroon', fg='white')
 rb_segi_empat.pack()
-rb_persegi_panjang = tk.Radiobutton(root, text="Persegi Panjang", variable=var, value=2, command=pilih_bangun_datar)
+rb_persegi_panjang = tk.Radiobutton(root, text="Persegi Panjang", variable=var, value=2, command=pilih_bangun_datar, bg='maroon', fg='white')
 rb_persegi_panjang.pack()
-rb_segitiga = tk.Radiobutton(root, text="Segitiga", variable=var, value=3, command=pilih_bangun_datar)
+rb_segitiga = tk.Radiobutton(root, text="Segitiga", variable=var, value=3, command=pilih_bangun_datar, bg='maroon', fg='white')
 rb_segitiga.pack()
-rb_lingkaran = tk.Radiobutton(root, text="Lingkaran", variable=var, value=4, command=pilih_bangun_datar)
+rb_lingkaran = tk.Radiobutton(root, text="Lingkaran", variable=var, value=4, command=pilih_bangun_datar, bg='maroon', fg='white')
 rb_lingkaran.pack()
 
-label_sisi = tk.Label(root, text="Masukkan Sisi:")
-entry_sisi = tk.Entry(root)
-label_panjang = tk.Label(root, text="Masukkan Panjang:")
-entry_panjang = tk.Entry(root)
-label_lebar = tk.Label(root, text="Masukkan Lebar:")
-entry_lebar = tk.Entry(root)
-label_alas = tk.Label(root, text="Masukkan Alas:")
-entry_alas = tk.Entry(root)
-label_tinggi = tk.Label(root, text="Masukkan Tinggi:")
-entry_tinggi = tk.Entry(root)
-label_sisi_a = tk.Label(root, text="Masukkan Sisi A:")
-entry_sisi_a = tk.Entry(root)
-label_sisi_b = tk.Label(root, text="Masukkan Sisi B:")
-entry_sisi_b = tk.Entry(root)
-label_sisi_c = tk.Label(root, text="Masukkan Sisi C:")
-entry_sisi_c = tk.Entry(root)
-label_jari_jari = tk.Label(root, text="Masukkan Jari-jari:")
-entry_jari_jari = tk.Entry(root)
+input_frame = tk.Frame(root, bg='maroon')
+input_frame.pack()
 
-button_hitung = tk.Button(root, text="Hitung")
+label_sisi = tk.Label(input_frame, text="Masukkan Sisi:", bg='maroon', fg='white')
+entry_sisi = tk.Entry(input_frame)
+label_panjang = tk.Label(input_frame, text="Masukkan Panjang:", bg='maroon', fg='white')
+entry_panjang = tk.Entry(input_frame)
+label_lebar = tk.Label(input_frame, text="Masukkan Lebar:", bg='maroon', fg='white')
+entry_lebar = tk.Entry(input_frame)
+label_alas = tk.Label(input_frame, text="Masukkan Alas:", bg='maroon', fg='white')
+entry_alas = tk.Entry(input_frame)
+label_tinggi = tk.Label(input_frame, text="Masukkan Tinggi:", bg='maroon', fg='white')
+entry_tinggi = tk.Entry(input_frame)
+label_sisi_a = tk.Label(input_frame, text="Masukkan Sisi A:", bg='maroon', fg='white')
+entry_sisi_a = tk.Entry(input_frame)
+label_sisi_b = tk.Label(input_frame, text="Masukkan Sisi B:", bg='maroon', fg='white')
+entry_sisi_b = tk.Entry(input_frame)
+label_sisi_c = tk.Label(input_frame, text="Masukkan Sisi C:", bg='maroon', fg='white')
+entry_sisi_c = tk.Entry(input_frame)
+label_jari_jari = tk.Label(input_frame, text="Masukkan Jari-jari:", bg='maroon', fg='white')
+entry_jari_jari = tk.Entry(input_frame)
+
+button_hitung = tk.Button(root, text="Hitung", bg='maroon', fg='white')
 button_hitung.pack()
-hasil = tk.Label(root, text="")
+hasil = tk.Label(root, text="", bg='maroon', fg='white')
 hasil.pack()
 
 root.mainloop()
