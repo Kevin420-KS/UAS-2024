@@ -1,0 +1,103 @@
+import tkinter as tk
+from tkinter import messagebox
+
+def hitung_segi_empat():
+    sisi = float(entry_sisi.get())
+    luas = sisi ** 2
+    keliling = 4 * sisi
+    hasil.config(text=f"Luas: {luas}, Keliling: {keliling}")
+
+def hitung_persegi_panjang():
+    panjang = float(entry_panjang.get())
+    lebar = float(entry_lebar.get())
+    luas = panjang * lebar
+    keliling = 2 * (panjang + lebar)
+    hasil.config(text=f"Luas: {luas}, Keliling: {keliling}")
+
+def hitung_segitiga():
+    alas = float(entry_alas.get())
+    tinggi = float(entry_tinggi.get())
+    sisi_a = float(entry_sisi_a.get())
+    sisi_b = float(entry_sisi_b.get())
+    sisi_c = float(entry_sisi_c.get())
+    luas = 0.5 * alas * tinggi
+    keliling = sisi_a + sisi_b + sisi_c
+    hasil.config(text=f"Luas: {luas}, Keliling: {keliling}")
+
+def hitung_lingkaran():
+    jari_jari = float(entry_jari_jari.get())
+    luas = 3.14 * jari_jari ** 2
+    keliling = 2 * 3.14 * jari_jari
+    hasil.config(text=f"Luas: {luas}, Keliling: {keliling}")
+
+def pilih_bangun_datar():
+    pilihan = var.get()
+    if pilihan == 1:
+        label_sisi.pack()
+        entry_sisi.pack()
+        button_hitung.config(command=hitung_segi_empat)
+    elif pilihan == 2:
+        label_panjang.pack()
+        entry_panjang.pack()
+        label_lebar.pack()
+        entry_lebar.pack()
+        button_hitung.config(command=hitung_persegi_panjang)
+    elif pilihan == 3:
+        label_alas.pack()
+        entry_alas.pack()
+        label_tinggi.pack()
+        entry_tinggi.pack()
+        label_sisi_a.pack()
+        entry_sisi_a.pack()
+        label_sisi_b.pack()
+        entry_sisi_b.pack()
+        label_sisi_c.pack()
+        entry_sisi_c.pack()
+        button_hitung.config(command=hitung_segitiga)
+    elif pilihan == 4:
+        label_jari_jari.pack()
+        entry_jari_jari.pack()
+        button_hitung.config(command=hitung_lingkaran)
+
+root = tk.Tk()
+root.title("Hitung Bangun Datar")
+
+var = tk.IntVar()
+
+label = tk.Label(root, text="Pilih Bangun Datar")
+label.pack()
+
+rb_segi_empat = tk.Radiobutton(root, text="Segi Empat", variable=var, value=1, command=pilih_bangun_datar)
+rb_segi_empat.pack()
+rb_persegi_panjang = tk.Radiobutton(root, text="Persegi Panjang", variable=var, value=2, command=pilih_bangun_datar)
+rb_persegi_panjang.pack()
+rb_segitiga = tk.Radiobutton(root, text="Segitiga", variable=var, value=3, command=pilih_bangun_datar)
+rb_segitiga.pack()
+rb_lingkaran = tk.Radiobutton(root, text="Lingkaran", variable=var, value=4, command=pilih_bangun_datar)
+rb_lingkaran.pack()
+
+label_sisi = tk.Label(root, text="Masukkan Sisi:")
+entry_sisi = tk.Entry(root)
+label_panjang = tk.Label(root, text="Masukkan Panjang:")
+entry_panjang = tk.Entry(root)
+label_lebar = tk.Label(root, text="Masukkan Lebar:")
+entry_lebar = tk.Entry(root)
+label_alas = tk.Label(root, text="Masukkan Alas:")
+entry_alas = tk.Entry(root)
+label_tinggi = tk.Label(root, text="Masukkan Tinggi:")
+entry_tinggi = tk.Entry(root)
+label_sisi_a = tk.Label(root, text="Masukkan Sisi A:")
+entry_sisi_a = tk.Entry(root)
+label_sisi_b = tk.Label(root, text="Masukkan Sisi B:")
+entry_sisi_b = tk.Entry(root)
+label_sisi_c = tk.Label(root, text="Masukkan Sisi C:")
+entry_sisi_c = tk.Entry(root)
+label_jari_jari = tk.Label(root, text="Masukkan Jari-jari:")
+entry_jari_jari = tk.Entry(root)
+
+button_hitung = tk.Button(root, text="Hitung")
+button_hitung.pack()
+hasil = tk.Label(root, text="")
+hasil.pack()
+
+root.mainloop()
